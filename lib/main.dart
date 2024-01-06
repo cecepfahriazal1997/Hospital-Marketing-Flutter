@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, library_prefixes
 
 import 'package:flutter/material.dart';
+import 'package:hostpitalmarketing/components/Button.dart';
 
 void main() {
   runApp(const MyApp());
@@ -44,6 +45,26 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Button(
+                  name: "Primary",
+                  onPress: () {
+                    print("Event Listener");
+                  },
+                ),
+                Button(
+                    name: "Warning",
+                    backgroundColor: Colors.yellow.shade700,
+                    paddingTop: 20),
+                Button(
+                  name: "Success",
+                  backgroundColor: Colors.green.shade700,
+                ),
+                Button(
+                  name: "Info",
+                  backgroundColor: Colors.blue.shade700,
+                )
+              ],
             ),
           ),
         ));
