@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_const_constructors, library_prefixes
 
 import 'package:flutter/material.dart';
-import 'package:hostpitalmarketing/components/Button.dart';
+import 'package:hostpitalmarketing/components/button.dart';
+import 'package:quickalert/quickalert.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,7 +50,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 Button(
                   name: "Primary",
                   onPress: () {
-                    print("Event Listener");
+                    QuickAlert.show(
+                        context: context,
+                        type: QuickAlertType.success,
+                        title: 'Oops',
+                        text: 'You just broke protocol');
                   },
                 ),
                 Button(
