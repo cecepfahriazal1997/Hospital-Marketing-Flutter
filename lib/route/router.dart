@@ -6,6 +6,6 @@ final GoRouter router = GoRouter(routes: [
   GoRoute(path: '/home', builder: (context, state) => const MyApp()),
   GoRoute(
     path: '/',
-    builder: (context, state) => Signin(),
+    builder: (context, state) => const Signin(),
   )
 ]);

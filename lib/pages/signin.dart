@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hostpitalmarketing/components/input.dart';
 import 'package:hostpitalmarketing/components/label.dart';
 import 'package:hostpitalmarketing/components/button.dart';
+// ignore: library_prefixes
 import 'package:hostpitalmarketing/colors.dart' as baseColor;
 import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 
