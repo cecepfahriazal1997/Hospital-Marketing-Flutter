@@ -25,13 +25,12 @@ class Account extends StatelessWidget {
     return SafeArea(
       child: SingleChildScrollView(
         child: Container(
-          padding: const EdgeInsets.all(30),
+          padding: const EdgeInsets.all(16),
           color: Colors.grey[200],
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height - 100,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
+              SizedBox(height: 20),
               CircleAvatar(
                 radius: 50,
                 backgroundColor: Colors.blue[200],
@@ -52,7 +51,7 @@ class Account extends StatelessWidget {
                 fontSize: 14,
               ),
               const SizedBox(
-                height: 42,
+                height: 32,
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -126,7 +125,7 @@ class Account extends StatelessWidget {
                       backgroundColor: baseColor.smoothGrey,
                       color: Colors.black,
                       marginLeft: 0,
-                      marginTop: 30,
+                      marginTop: 24,
                       onPress: () async {
                         logout(context);
                       },
