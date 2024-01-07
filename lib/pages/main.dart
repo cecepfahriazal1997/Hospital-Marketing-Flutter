@@ -5,12 +5,14 @@ import 'package:go_router/go_router.dart';
 import 'package:hostpitalmarketing/components/button.dart';
 import 'package:hostpitalmarketing/colors.dart' as baseColor;
 import 'package:quickalert/quickalert.dart';
+import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+    FlutterStatusbarcolor.setStatusBarColor(baseColor.primary);
     return MaterialApp(
       title: 'Hostpital Marketing',
       theme: ThemeData(
@@ -63,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     backgroundColor: Colors.yellow.shade700,
                     paddingTop: 20,
                     onPress: () {
-                      GoRouter.of(context).go('/signin');
+                      GoRouter.of(context).push('/');
                     }),
                 Button(
                   name: "Success",

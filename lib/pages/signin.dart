@@ -3,15 +3,15 @@ import 'package:go_router/go_router.dart';
 import 'package:hostpitalmarketing/components/input.dart';
 import 'package:hostpitalmarketing/components/label.dart';
 import 'package:hostpitalmarketing/components/button.dart';
+import 'package:hostpitalmarketing/colors.dart' as baseColor;
+import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 
 class Signin extends StatelessWidget {
-  Signin({super.key});
-
-  final usernameController = TextEditingController();
-  final passwordController = TextEditingController();
+  const Signin({super.key});
 
   @override
   Widget build(BuildContext context) {
+    FlutterStatusbarcolor.setStatusBarColor(baseColor.primary);
     return Scaffold(
         appBar: null,
         body: SingleChildScrollView(
@@ -36,7 +36,7 @@ class Signin extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                     TextFieldInput(
-                        controller: usernameController,
+                        controller: TextEditingController(),
                         name: "Masukan username",
                         errorMessage: "Username harus diisi",
                         withLabelText: false,
@@ -50,7 +50,7 @@ class Signin extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                     TextFieldInput(
-                        controller: passwordController,
+                        controller: TextEditingController(),
                         name: "Masukan Password",
                         errorMessage: "Password harus diisi",
                         marginTop: 8,
@@ -63,6 +63,7 @@ class Signin extends StatelessWidget {
                       name: "Login",
                       paddingLeft: 0,
                       onPress: () {
+                        // GoRouter.of(context).push('/home');
                         GoRouter.of(context).go('/home');
                       },
                     ),
