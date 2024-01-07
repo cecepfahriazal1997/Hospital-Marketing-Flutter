@@ -10,17 +10,22 @@ class Button extends StatelessWidget {
   Color backgroundColor;
   double paddingLeft, paddingTop, paddingRight, paddingBottom;
   VoidCallback onPress;
+  double height, width;
+  double fontSize;
 
   Button(
       {super.key,
       required this.name,
-      this.radius = 16,
+      this.radius = 10,
       this.color = Colors.white,
       this.backgroundColor = baseColor.primary,
-      this.paddingLeft = 0,
-      this.paddingTop = 0,
-      this.paddingRight = 0,
-      this.paddingBottom = 0,
+      this.paddingLeft = 8,
+      this.paddingTop = 8,
+      this.paddingRight = 8,
+      this.paddingBottom = 8,
+      this.height = 45,
+      this.width = double.infinity,
+      this.fontSize = 14,
       VoidCallback? onPress})
       : onPress = onPress ?? (() {});
 
@@ -28,21 +33,25 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
         padding: EdgeInsets.only(left: paddingLeft, top: paddingTop),
-        child: InkWell(
-            onTap: onPress,
-            child: Container(
-              height: 50,
-              decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(radius)),
-              child: Center(
-                child: Text(
-                  name,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                  style: TextStyle(color: color, fontWeight: FontWeight.bold),
-                ),
-              ),
-            )));
+        child: SizedBox(
+          width: width > 0 ? width : null,
+          height: height,
+          child: ElevatedButton(
+              onPressed: onPress,
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: backgroundColor,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(radius))),
+              child: Text(
+                name,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+                style: TextStyle(
+                    color: color,
+                    fontSize: fontSize,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Poppins'),
+              )),
+        ));
   }
 }
