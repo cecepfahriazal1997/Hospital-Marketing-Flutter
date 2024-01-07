@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:hostpitalmarketing/colors.dart' as baseColor;
 
 class Button extends StatelessWidget {
-  String name;
-  double radius;
-  Color color;
-  Color backgroundColor;
-  double paddingLeft, paddingTop, paddingRight, paddingBottom;
-  VoidCallback onPress;
-  double height, width;
-  double fontSize;
+  final String name;
+  final double radius;
+  final Color color;
+  final Color backgroundColor;
+  final double paddingLeft, paddingTop, paddingRight, paddingBottom;
+  final VoidCallback onPress;
+  final double height, width;
+  final double fontSize;
 
   Button(
       {super.key,
