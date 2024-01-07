@@ -5,6 +5,7 @@ class Label extends StatelessWidget {
   final double marginLeft, marginTop, marginRight, marginBottom;
   final double fontSize;
   final FontWeight fontWeight;
+  final Color fontColor;
 
   const Label(
       {super.key,
@@ -14,7 +15,8 @@ class Label extends StatelessWidget {
       this.marginRight = 0,
       this.marginBottom = 0,
       this.fontSize = 14,
-      this.fontWeight = FontWeight.normal});
+      this.fontWeight = FontWeight.normal,
+      this.fontColor = Colors.black});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,11 @@ class Label extends StatelessWidget {
           bottom: marginBottom),
       child: Text(
         title,
-        style: TextStyle(fontSize: fontSize, fontWeight: fontWeight),
+        style: TextStyle(
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+            color: fontColor,
+            fontFamily: 'Poppins'),
       ),
     );
   }

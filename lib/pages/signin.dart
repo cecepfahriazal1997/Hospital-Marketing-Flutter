@@ -24,14 +24,14 @@ class Signin extends StatelessWidget {
                   children: [
                     const Label(
                       title: 'Selamat Datang kembali! Masuk ke akun Anda.',
-                      marginTop: 82,
+                      marginTop: 48,
                       marginBottom: 48,
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
                     ),
                     const Label(
                       title: 'Username',
-                      marginTop: 48,
+                      marginTop: 8,
                       marginBottom: 8,
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -46,6 +46,7 @@ class Signin extends StatelessWidget {
                         inputType: TextInputType.text),
                     const Label(
                       title: 'Password',
+                      marginTop: 8,
                       marginBottom: 8,
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -54,7 +55,6 @@ class Signin extends StatelessWidget {
                         controller: TextEditingController(),
                         name: "Masukan Password",
                         errorMessage: "Password harus diisi",
-                        marginTop: 8,
                         withLabelText: false,
                         withIcon: true,
                         prefixIcon: Icons.lock,
@@ -68,6 +68,70 @@ class Signin extends StatelessWidget {
                         GoRouter.of(context).go('/home');
                       },
                     ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 35),
+                      child: Column(children: [
+                        Row(children: <Widget>[
+                          Expanded(
+                            child: Container(
+                                margin: const EdgeInsets.only(right: 20.0),
+                                child: const Divider(
+                                  color: baseColor.smoothGrey,
+                                  height: 1,
+                                )),
+                          ),
+                          const Label(
+                            title: "Atau masuk dengan",
+                            fontSize: 12,
+                            fontColor: baseColor.grey,
+                          ),
+                          Expanded(
+                            child: Container(
+                                margin: const EdgeInsets.only(left: 20.0),
+                                child: const Divider(
+                                  color: baseColor.smoothGrey,
+                                  height: 1,
+                                )),
+                          ),
+                        ]),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              top: 20, left: 20, right: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              IconButton(
+                                icon: Image.asset(
+                                  'assets/images/google.png',
+                                  height: 42,
+                                  width: 42,
+                                ),
+                                iconSize: 42,
+                                onPressed: () {},
+                              ),
+                              IconButton(
+                                icon: Image.asset(
+                                  'assets/images/apple.png',
+                                  height: 42,
+                                  width: 42,
+                                ),
+                                iconSize: 42,
+                                onPressed: () {},
+                              ),
+                              IconButton(
+                                icon: Image.asset(
+                                  'assets/images/facebook.png',
+                                  height: 42,
+                                  width: 42,
+                                ),
+                                iconSize: 42,
+                                onPressed: () {},
+                              )
+                            ],
+                          ),
+                        )
+                      ]),
+                    )
                   ],
                 )),
           ]),
