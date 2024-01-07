@@ -1,0 +1,74 @@
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hostpitalmarketing/components/input.dart';
+import 'package:hostpitalmarketing/components/label.dart';
+import 'package:hostpitalmarketing/components/button.dart';
+
+class Signin extends StatelessWidget {
+  Signin({super.key});
+
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: null,
+        body: SingleChildScrollView(
+          child: Stack(children: <Widget>[
+            Padding(
+                padding: const EdgeInsets.all(32),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Label(
+                      title: 'Selamat Datang kembali! Masuk ke akun Anda.',
+                      marginTop: 82,
+                      marginBottom: 48,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    const Label(
+                      title: 'Username',
+                      marginTop: 48,
+                      marginBottom: 8,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    TextFieldInput(
+                        controller: usernameController,
+                        name: "Masukan username",
+                        errorMessage: "Username harus diisi",
+                        withLabelText: false,
+                        withIcon: true,
+                        prefixIcon: Icons.person_rounded,
+                        inputType: TextInputType.text),
+                    const Label(
+                      title: 'Password',
+                      marginBottom: 8,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    TextFieldInput(
+                        controller: passwordController,
+                        name: "Masukan Password",
+                        errorMessage: "Password harus diisi",
+                        marginTop: 8,
+                        withLabelText: false,
+                        withIcon: true,
+                        prefixIcon: Icons.lock,
+                        obscureText: true,
+                        inputType: TextInputType.visiblePassword),
+                    Button(
+                      name: "Login",
+                      paddingLeft: 0,
+                      onPress: () {
+                        GoRouter.of(context).go('/home');
+                      },
+                    ),
+                  ],
+                )),
+          ]),
+        ));
+  }
+}

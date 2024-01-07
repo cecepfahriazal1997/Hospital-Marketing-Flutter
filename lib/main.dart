@@ -1,9 +1,7 @@
 // ignore_for_file: prefer_const_constructors, library_prefixes
 
 import 'package:flutter/material.dart';
-import 'package:hostpitalmarketing/components/button.dart';
-import 'package:hostpitalmarketing/colors.dart' as baseColor;
-import 'package:quickalert/quickalert.dart';
+import 'package:hostpitalmarketing/route/router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,68 +12,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Hostpital Marketing',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Hostpital Marketing'),
+    return MaterialApp.router(
+      routerConfig: router,
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          backgroundColor: baseColor.primary,
-          title: Text(
-            widget.title,
-            style: TextStyle(color: Colors.white),
-          ),
-        ),
-        body: Padding(
-          padding: EdgeInsets.all(32),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Button(
-                  name: "Primary",
-                  onPress: () {
-                    QuickAlert.show(
-                        context: context,
-                        type: QuickAlertType.success,
-                        title: 'Oops',
-                        text: 'You just broke protocol');
-                  },
-                ),
-                Button(
-                    name: "Warning",
-                    backgroundColor: Colors.yellow.shade700,
-                    paddingTop: 20),
-                Button(
-                  name: "Success",
-                  backgroundColor: Colors.green.shade700,
-                ),
-                Button(
-                  name: "Info",
-                  backgroundColor: Colors.blue.shade700,
-                )
-              ],
-            ),
-          ),
-        ));
   }
 }
