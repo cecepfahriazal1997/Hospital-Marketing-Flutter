@@ -1,11 +1,14 @@
-// ignore_for_file: prefer_const_constructors, library_prefixes
+// ignore_for_file: prefer_const_constructors, library_prefixes, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hostpitalmarketing/components/button.dart';
+// import 'package:go_router/go_router.dart';
 import 'package:hostpitalmarketing/colors.dart' as baseColor;
-import 'package:quickalert/quickalert.dart';
 import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
+import 'package:hostpitalmarketing/fragments/account.dart';
+import 'package:hostpitalmarketing/fragments/home.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -34,50 +37,71 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _currentIndex = 0;
+
+  void checkLoginState() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    bool isLoggedIn = prefs.getBool("isLoggedIn") ?? false;
+
+    if (isLoggedIn) {
+      context.go('/home');
+    } else {
+      context.go('/');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      checkLoginState();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: baseColor.primary,
-          title: Text(
-            widget.title,
-            style: TextStyle(color: Colors.white),
-          ),
-        ),
-        body: Padding(
-          padding: EdgeInsets.all(32),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Button(
-                  name: "Primary",
-                  onPress: () {
-                    QuickAlert.show(
-                        context: context,
-                        type: QuickAlertType.success,
-                        title: 'Oops',
-                        text: 'You just broke protocol');
-                  },
-                ),
-                Button(
-                    name: "Warning",
-                    backgroundColor: Colors.yellow.shade700,
-                    paddingTop: 20,
-                    onPress: () {
-                      GoRouter.of(context).push('/');
-                    }),
-                Button(
-                  name: "Success",
-                  backgroundColor: Colors.green.shade700,
-                ),
-                Button(
-                  name: "Info",
-                  backgroundColor: Colors.blue.shade700,
-                )
-              ],
-            ),
-          ),
-        ));
+      appBar: null,
+      extendBody: true,
+      backgroundColor: Colors.grey[200],
+      body: <Widget>[Home(), Account()][_currentIndex],
+      bottomNavigationBar: Container(
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+          topRight: Radius.circular(24),
+          topLeft: Radius.circular(24),
+        )),
+        child: NavigationBar(
+            elevation: 1,
+            backgroundColor: Colors.white,
+            indicatorColor: baseColor.primarySoft,
+            onDestinationSelected: (int selected) {
+              setState(() {
+                _currentIndex = selected;
+              });
+            },
+            selectedIndex: _currentIndex,
+            height: 70,
+            destinations: const [
+              NavigationDestination(
+                  icon: Icon(Iconsax.home),
+                  selectedIcon: Icon(
+                    Iconsax.home,
+                    color: Colors.white,
+                  ),
+                  label: "Home"),
+              NavigationDestination(
+                  icon: Icon(Iconsax.user),
+                  selectedIcon: Icon(
+                    Iconsax.user,
+                    color: Colors.white,
+                  ),
+                  label: "Akun")
+            ]),
+      ),
+    );
   }
 }

@@ -6,9 +6,20 @@ import 'package:hostpitalmarketing/components/button.dart';
 // ignore: library_prefixes
 import 'package:hostpitalmarketing/colors.dart' as baseColor;
 import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Signin extends StatelessWidget {
   const Signin({super.key});
+
+  void login(BuildContext context) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    prefs.setBool('isLoggedIn', true);
+
+    // GoRouter.of(context).push('/home');
+    // ignore: use_build_context_synchronously
+    GoRouter.of(context).go('/home');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,9 +74,8 @@ class Signin extends StatelessWidget {
                     Button(
                       name: "Login",
                       paddingLeft: 0,
-                      onPress: () {
-                        // GoRouter.of(context).push('/home');
-                        GoRouter.of(context).go('/home');
+                      onPress: () async {
+                        login(context);
                       },
                     ),
                     Padding(
