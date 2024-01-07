@@ -63,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Button(
                     name: "Warning",
                     backgroundColor: Colors.yellow.shade700,
-                    paddingTop: 20,
+                    marginTop: 20,
                     onPress: () {
                       GoRouter.of(context).push('/');
                     }),

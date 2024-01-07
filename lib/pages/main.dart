@@ -45,9 +45,9 @@ class _MyHomePageState extends State<MyHomePage> {
     bool isLoggedIn = prefs.getBool("isLoggedIn") ?? false;
 
     if (isLoggedIn) {
-      context.go('/home');
-    } else {
       context.go('/');
+    } else {
+      context.go('/signin');
     }
   }
 

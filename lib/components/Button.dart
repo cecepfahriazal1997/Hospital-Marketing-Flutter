@@ -9,7 +9,7 @@ class Button extends StatelessWidget {
   final double radius;
   final Color color;
   final Color backgroundColor;
-  final double paddingLeft, paddingTop, paddingRight, paddingBottom;
+  final double marginLeft, marginTop, marginRight, marginBottom;
   final VoidCallback onPress;
   final double height, width;
   final double fontSize;
@@ -20,10 +20,10 @@ class Button extends StatelessWidget {
       this.radius = 10,
       this.color = Colors.white,
       this.backgroundColor = baseColor.primary,
-      this.paddingLeft = 8,
-      this.paddingTop = 8,
-      this.paddingRight = 8,
-      this.paddingBottom = 8,
+      this.marginLeft = 8,
+      this.marginTop = 8,
+      this.marginRight = 8,
+      this.marginBottom = 8,
       this.height = 45,
       this.width = double.infinity,
       this.fontSize = 14,
@@ -32,8 +32,8 @@ class Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: EdgeInsets.only(left: paddingLeft, top: paddingTop),
+    return Container(
+        margin: EdgeInsets.only(left: marginLeft, top: marginTop),
         child: SizedBox(
           width: width > 0 ? width : null,
           height: height,

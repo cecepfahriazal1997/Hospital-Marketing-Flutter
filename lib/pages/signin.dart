@@ -16,9 +16,9 @@ class Signin extends StatelessWidget {
 
     prefs.setBool('isLoggedIn', true);
 
-    // GoRouter.of(context).push('/home');
+    // GoRouter.of(context).push('/');
     // ignore: use_build_context_synchronously
-    GoRouter.of(context).go('/home');
+    GoRouter.of(context).go('/');
   }
 
   @override
@@ -73,7 +73,7 @@ class Signin extends StatelessWidget {
                         inputType: TextInputType.visiblePassword),
                     Button(
                       name: "Login",
-                      paddingLeft: 0,
+                      marginLeft: 0,
                       onPress: () async {
                         login(context);
                       },
