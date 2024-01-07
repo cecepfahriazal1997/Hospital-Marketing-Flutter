@@ -4,6 +4,7 @@ import 'package:hostpitalmarketing/components/button.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:go_router/go_router.dart';
+// ignore: library_prefixes
 import 'package:hostpitalmarketing/colors.dart' as baseColor;
 
 // ignore: must_be_immutable
